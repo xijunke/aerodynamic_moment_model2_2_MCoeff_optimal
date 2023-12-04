@@ -160,22 +160,22 @@ Cr_nd=vpa(poly2sym(P_coeff_Cr,r_nd),6);
 %% 注意——该段程序切记不得修改，前提只要保证输入正确的无量纲弦长分布即可。
 %以下的公式应使用合理的无量纲的弦长分布公式C_nd
 C_nd=Cr_nd;
-% R2nd2=double(int(r_nd^2*C_nd,r_nd,0,1)); %二阶面积矩的回转半径的平方
-% R1nd1=double(int(r_nd*C_nd,r_nd,0,1));     %一阶面积矩的回转半径
-% S_nd=double(int(C_nd,r_nd,0,1));                %无量纲翅面积 % S_nd =1.0000;
-% disp(['二阶面积矩的回转半径的平方: r2_2nd=' num2str(R2nd2)  ' 量纲单位是mm^4'])
-% disp(['二阶面积矩的回转半径: r_2nd=' num2str(sqrt(R2nd2))  ' 量纲单位是mm^3'])
-% disp(['一阶面积矩的回转半径: r_1nd=' num2str(R1nd1)  ' 量纲单位是mm^3'])
-% disp(['无量纲翅面积Swing_nd=' num2str(S_nd)  ' 量纲单位是mm^2'])
+R2nd2=double(int(r_nd^2*C_nd,r_nd,0,1)); %二阶面积矩的回转半径的平方
+R1nd1=double(int(r_nd*C_nd,r_nd,0,1));     %一阶面积矩的回转半径
+S_nd=double(int(C_nd,r_nd,0,1));                %无量纲翅面积 % S_nd =1.0000;
+disp(['二阶面积矩的回转半径的平方: r2_2nd=' num2str(R2nd2)  ' 量纲单位是mm^4'])
+disp(['二阶面积矩的回转半径: r_2nd=' num2str(sqrt(R2nd2))  ' 量纲单位是mm^3'])
+disp(['一阶面积矩的回转半径: r_1nd=' num2str(R1nd1)  ' 量纲单位是mm^3'])
+disp(['无量纲翅面积Swing_nd=' num2str(S_nd)  ' 量纲单位是mm^2'])
 % C_nd=vpa(C_nd,5)  %函数vpa将符号表达式中的数值(常转换为两个整数的比值,即分数)，转换为十进制小数表示。
 % 假设xr_nd=0，则自变量r_nd的取值范围为:r_nd∈[0,1], 在取1时r_nd=R=11.95 /mm
 fx1=(r_nd+xr_nd)^2*C_nd;    % 无量纲气动力F_nd的原始被积函数
 % fx2=vpa(fx1,5)
 fx3=expand(fx1);
 F_ndTrans=double(int(fx3,r_nd,0,1));                    % Result: F_ndTrans =0.46391;
-% disp(['无量纲气动力F_ndTrans=' num2str(F_ndTrans)  ' 量纲单位是mm^4'])
-% F_nd2=R2nd2+2*xr_nd*R1nd1+xr_nd^2;    %使用这句计算结果也正确; 输出:F_nd2 =0.46391;
-% disp(['无量纲气动力F_ndTrans=' num2str(F_nd2)  ' 量纲单位是mm^4'])
+disp(['无量纲气动力F_ndTrans=' num2str(F_ndTrans)  ' 量纲单位是mm^4'])
+F_nd2=R2nd2+2*xr_nd*R1nd1+xr_nd^2;    %使用这句计算结果也正确; 输出:F_nd2 =0.46391;
+disp(['无量纲气动力F_ndTrans=' num2str(F_nd2)  ' 量纲单位是mm^4'])
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 输出:
 % 二阶面积矩的回转半径的平方: r2_2nd=0.3358 量纲单位是mm^4
@@ -234,7 +234,7 @@ y0=yr_leadnd-C_nd;   % 此时输出Z_nd=0.08802;
 y1=yr_leadnd;
 yr_nd2=(y1^4+y0^4)/4;   % 注意这里的扭转轴直接通过翅尖和翅根的连线，前缘函数的翅膀展向区间唯一
 Z_rnd=double(int(yr_nd2,r_nd,0,1));                          % 输出: Z_nd=0.08802(old);   %  mm  % Z_rnd =0.1627;
-% disp(['有效力臂的无量纲位置Z_nd=' num2str(Z_rnd)  ' 量纲单位是mm'])  % 结果可由Maple求得
+disp(['有效力臂的无量纲位置Z_nd=' num2str(Z_rnd)  ' 量纲单位是mm'])  % 结果可由Maple求得
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % (1) 转动气动阻尼力矩参数——绕翅平面下的展向轴
 % 下面为转动气动阻尼力矩系数% mg*mm^-3*mm^5=Kg.m^2:[10^(-12)]= mg.mm^2

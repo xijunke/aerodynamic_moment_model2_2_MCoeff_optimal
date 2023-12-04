@@ -33,7 +33,6 @@ toc
 %% 第二方案—— Call patternsearch——模式搜索
 tic
 matlabpool open 8
-ObjFunction=@objfunction_aeroM_coeff;  % fitness and constraint functions——调用目标函数objfunction_aeroM_coeff
 x0=[1, 1, 1, 1, 1.11, 1, 1, 1, 1, 1, 1, 1, 1, 1];      % stdev =;
 % psoptimset——Create pattern search options structure
 % % Complete poll around current iterate; 'off'
